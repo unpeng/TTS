@@ -578,9 +578,7 @@ public class TTSService extends TextToSpeechService {
             String origin;
 //                    if (TokenHolder.token != null && APP.getBoolean(Constants.USE_PREVIEW, false)) {
             if (APP.getBoolean(Constants.USE_PREVIEW, false)) {
-                //url = "wss://eastus.tts.speech.microsoft.com/cognitiveservices/websocket/v1?Authorization=bearer " + TokenHolder.token + "&X-ConnectionId=" + CommonTool.getMD5String(new Date().toString());
-                url = "wss://eastus.api.speech.microsoft.com/cognitiveservices/websocket/v1?TrafficType=AzureDemo&Authorization=bearer undefined&X-ConnectionId="
-                        + CommonTool.getMD5String(new Date().toString()) + "&Retry-After=200";
+                url = "wss://southeastasia.api.speech.microsoft.com/cognitiveservices/websocket/v1";
                 origin = "https://azure.microsoft.com";
                 isPreview = true;
             } else {
@@ -592,6 +590,9 @@ public class TTSService extends TextToSpeechService {
                     .url(url)
                     //.header("Accept-Language", "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6")
                     //.header("Accept-Encoding", "gzip, deflate")
+                    .header("Ocp-Apim-Subscription-Key", "31dc69c2f30e49db8fcbd2e6167d6b77")
+                    .header("Authorization", "bearer eyJhbGciOiJFUzI1NiIsImtpZCI6ImtleTEiLCJ0eXAiOiJKV1QifQ.eyJyZWdpb24iOiJzb3V0aGVhc3Rhc2lhIiwic3Vic2NyaXB0aW9uLWlkIjoiODQzMmI0OTU2MjkwNDNhYjk3OTZhMjQyZmU4ZThmODkiLCJwcm9kdWN0LWlkIjoiU3BlZWNoU2VydmljZXMuRjAiLCJjb2duaXRpdmUtc2VydmljZXMtZW5kcG9pbnQiOiJodHRwczovL2FwaS5jb2duaXRpdmUubWljcm9zb2Z0LmNvbS9pbnRlcm5hbC92MS4wLyIsImF6dXJlLXJlc291cmNlLWlkIjoiL3N1YnNjcmlwdGlvbnMvZWMzNGZlYjktOGEyYS00MDQ4LWJjNGItMDIyZTY2Nzk3ZjlhL3Jlc291cmNlR3JvdXBzL3Z4aWRlbW8vcHJvdmlkZXJzL01pY3Jvc29mdC5Db2duaXRpdmVTZXJ2aWNlcy9hY2NvdW50cy92eGkiLCJzY29wZSI6InNwZWVjaHNlcnZpY2VzIiwiYXVkIjoidXJuOm1zLnNwZWVjaHNlcnZpY2VzLnNvdXRoZWFzdGFzaWEiLCJleHAiOjE2ODcyNTE5NjAsImlzcyI6InVybjptcy5jb2duaXRpdmVzZXJ2aWNlcyJ9.czwoI_2ql9tkafVA0ClUr-YTO1n-AlmdRXQndNnFldKWINNH5UP7NZg-YOYDPeX0GWZ24Ty7q5gywBWE9I2wzg")
+                    .header("X-ConnectionId", CommonTool.getMD5String(new Date().toString()))
                     .header("User-Agent", Constants.EDGE_UA)
                     .addHeader("Origin", origin)
                     .build();
